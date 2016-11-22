@@ -11,11 +11,27 @@ use Symfony\Component\HttpFoundation\Request;
 class CalculadoraController extends Controller
 {
 
+    /**
+     * @Route("/", name="app_calculadora_indexprincipal")
+     */
+    public function principalAction()
+    {
+        return $this->render(':calculadora:index_principal.html.twig');
+    }
+
 
     /**
      * @Route("/", name="app_calculadora_index")
      */
     public function indexAction()
+    {
+        return $this->render(':calculadora:index.html.twig');
+    }
+
+    /**
+     * @Route("/", name="app_calculadora_indexracional")
+     */
+    public function indexracionalAction()
     {
         return $this->render(':calculadora:index.html.twig');
     }
