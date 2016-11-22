@@ -107,19 +107,6 @@ class Calculadora
 
     }
 
-    public function multiplicarRacional()
-    {
-        $this->setResultado($this->getOp1()->multi($this->getOp2()));
-
-    }
-
-    public function dividirRacional()
-    {
-        $this->setResultado($this->getOp1()->divi($this->getOp2()));
-
-    }
-
-
 
     public function __toString()
     {
