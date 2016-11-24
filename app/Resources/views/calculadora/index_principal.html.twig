@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} {{ parent() }}Home{% endblock %}
+
+{% block body %}
+
+    <ul>
+        <li><a href="{{ path('app_calculadora_indexprincipal') }}">Index principal</a></li>
+        <li><a href="{{ path('app_calculadora_index') }}">Index calculadora</a></li>
+        <li><a href="{{ path('app_calculadora_indexracional') }}">Index racionales</a></li>
+
+
+    </ul>
+
+{% endblock %}

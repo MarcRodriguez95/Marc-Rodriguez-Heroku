@@ -107,6 +107,7 @@ class Calculadora
 
     }
 
+
     public function __toString()
     {
         return "El resultado es = " . $this->getResultado();

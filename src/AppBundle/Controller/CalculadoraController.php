@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Service\Calculadora;
+use AppBundle\Service\CalculadoraRacional;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -12,6 +13,7 @@ class CalculadoraController extends Controller
 {
 
 
+
     /**
      * @Route("/", name="app_calculadora_index")
      */
@@ -19,6 +21,8 @@ class CalculadoraController extends Controller
     {
         return $this->render(':calculadora:index.html.twig');
     }
+
+
 
 
     /**
@@ -142,6 +146,76 @@ class CalculadoraController extends Controller
 
         $calculadora = new Calculadora($op1, $op2);
         $calculadora->dividir();
+        $resultado= $calculadora->getResultado();
+        return $this->render(':calculadora:result.html.twig',
+            [
+                'resultado' => $resultado,
+
+                'op1'       => $op1,
+                'op2'       => $op2,
+                'operacion' => '/'
+            ]
+        );
+    }
+
+
+    /**
+     * @Route("/mult", name="app_calculadora_multi")
+     */
+    public function multiAction()
+    {
+        return $this->render(':calculadora:form.html.twig', [
+            'action' => 'app_calculadora_doMulti'
+        ]);
+    }
+
+    /**
+     * @Route("/doMult", name="app_calculadora_doMulti")
+     *
+     */
+    public function doMultiAction(Request $request)
+    {
+
+        $op1 = $request->request->get('num1','den1');
+        $op2 = $request->request->get('num2','den2');
+
+        $racionales = new CalculadoraRacional($op1, $op2);
+        $racionales->multiplicarRacional();
+        $resultado= $racionales->getResultado();
+        return $this->render(':calculadora:result.html.twig',
+            [
+                'resultado' => $resultado,
+
+                'op1'       => $op1,
+                'op2'       => $op2,
+                'operacion' => '*'
+            ]
+        );
+    }
+
+
+    /**
+     * @Route("/div", name="app_calculadora_divi")
+     */
+    public function diviAction()
+    {
+        return $this->render(':calculadora:form.html.twig', [
+            'action' => 'app_calculadora_doDivi'
+        ]);
+    }
+
+    /**
+     * @Route("/doDiv", name="app_calculadora_doDivi")
+     *
+     */
+    public function doDiviAction(Request $request)
+    {
+
+        $op1 = $request->request->get('op1');
+        $op2 = $request->request->get('op2');
+
+        $calculadora = new CalculadoraRacional($op1, $op2);
+        $calculadora->dividirRacional();
         $resultado= $calculadora->getResultado();
         return $this->render(':calculadora:result.html.twig',
             [
