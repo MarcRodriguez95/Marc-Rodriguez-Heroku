@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Insertar productos {% endblock %}
+
+{% block body %}
+
+
+    <div>
+        <form method="post" action="{{ path('app_product_doupdate') }}">
+            Id del producto:  <input type="hidden" name="id" value="{{ product.id }}">{{ product.id }}<br>
+            Nombre del producto: <input type="text" value="{{ product.name }}" name="nombre"><br>
+            Descripción del producto: <input type="text" value="{{ product.description }}" name="descripcion"><br>
+            Precio del producto: <input type="text" value="{{ product.precio }}" name="precio"><br>
+            {{ product.createAt|date("d/m/Y H:i:s") }}<br>
+            {{ product.updateAt|date("d/m/Y H:i:s") }}<br>
+            <input type="submit" value="Cambiar">
+
+        </form>
+    </div>
+
+{% endblock %}

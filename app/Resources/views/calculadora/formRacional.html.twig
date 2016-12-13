@@ -1,10 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-</body>
-</html>
+{% block title %} {{ parent() }}Form{% endblock %}
+
+{% block body %}
+
+    <form method="post" action="{{ path(action) }}">
+        <input type="number" name="num1" placeholder="An integer">Numerador 1
+        <input type="number" name="num2" placeholder="An integer">Numerador 2<br>
+
+        <input type="number" name="den1" placeholder="An integer">Denominador 1
+        <input type="number" name="den2" placeholder="An integer">Denominador 2<br>
+
+        <input type="submit" value="ok">
+    </form>
+
+{% endblock %}

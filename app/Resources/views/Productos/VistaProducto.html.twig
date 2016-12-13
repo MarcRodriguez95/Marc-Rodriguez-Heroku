@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Productos {% endblock %}
+
+{% block body %}
+
+   <table>
+        {% for product in producto %}
+            <tr>
+        <td>{{ product.id}}</td>
+        <td>{{ product.name}} </td>
+        <td>{{ product.description }}</td>
+        <td>{{ product.precio}}</td>
+        <td>{{ product.createAt|date}}</td>
+        <td>{{ product.updateAt|date("d/m/Y H:i:s")}}</td>
+        <td> <a href="{{ path('app_product_update', {'id': product.id}) }}">Update</a> </td>
+        <td> <a href="{{ path('app_product_remove', {'id': product.id}) }}">Eliminar</a> </td>
+            </tr>
+        {% endfor %}
+   </table>
+
+        <div style="margin-top: 10px">
+                <a href="{{ path('app_product_insertar') }}">Añadir producto</a>
+        </div>
+
+{% endblock %}

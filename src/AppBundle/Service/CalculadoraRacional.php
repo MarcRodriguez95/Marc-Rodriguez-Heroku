@@ -21,6 +21,17 @@ class CalculadoraRacional
      * @var int
      */
     private $op2;
+
+    /**
+     * @var int
+     */
+    private $op3;
+
+    /**
+     * @var int
+     */
+    private $op4;
+
     /**
      * @var int
      */
@@ -31,6 +42,7 @@ class CalculadoraRacional
     {
         $this->setOp1($r1);
         $this->setOp2($r2);
+
     }
 
     /**
@@ -64,6 +76,39 @@ class CalculadoraRacional
     {
         return $this->op2;
     }
+
+    /**
+     * @param int $op3
+     */
+    public function setOp3(Racional $op3)
+    {
+        $this->op3 = $op3;
+    }
+
+    /**
+     * @param int
+     */
+    public function getOp3()
+    {
+        return $this->op3;
+    }
+
+    /**
+     * @param int $op4
+     */
+    public function setOp4(Racional $op4)
+    {
+        $this->op4 = $op4;
+    }
+
+    /**
+     * @param int
+     */
+    public function getOp4()
+    {
+        return $this->op4;
+    }
+
 
     /**
      * @param int $resultado

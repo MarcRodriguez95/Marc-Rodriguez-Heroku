@@ -160,26 +160,29 @@ class CalculadoraController extends Controller
 
 
     /**
-     * @Route("/mult", name="app_calculadora_multi")
+     * @Route("/multi", name="app_calculadora_multi")
      */
     public function multiAction()
     {
-        return $this->render(':calculadora:form.html.twig', [
+        return $this->render(':calculadora:formRacional.html.twig', [
             'action' => 'app_calculadora_doMulti'
         ]);
     }
 
     /**
-     * @Route("/doMult", name="app_calculadora_doMulti")
+     * @Route("/doMulti", name="app_calculadora_doMulti")
      *
      */
     public function doMultiAction(Request $request)
     {
 
-        $op1 = $request->request->get('num1','den1');
-        $op2 = $request->request->get('num2','den2');
+        $op1 = $request->request->get('num1');
+        $op2 = $request->request->get('num2');
 
-        $racionales = new CalculadoraRacional($op1, $op2);
+        $op3 = $request->request->get('den1');
+        $op4 = $request->request->get('den2');
+
+        $racionales = new CalculadoraRacional($op1, $op2, $op3, $op4);
         $racionales->multiplicarRacional();
         $resultado= $racionales->getResultado();
         return $this->render(':calculadora:result.html.twig',
@@ -188,6 +191,8 @@ class CalculadoraController extends Controller
 
                 'op1'       => $op1,
                 'op2'       => $op2,
+                'op3'       => $op3,
+                'op4'       => $op4,
                 'operacion' => '*'
             ]
         );
@@ -195,7 +200,7 @@ class CalculadoraController extends Controller
 
 
     /**
-     * @Route("/div", name="app_calculadora_divi")
+     * @Route("/divi", name="app_calculadora_divi")
      */
     public function diviAction()
     {
@@ -205,7 +210,7 @@ class CalculadoraController extends Controller
     }
 
     /**
-     * @Route("/doDiv", name="app_calculadora_doDivi")
+     * @Route("/doDivi", name="app_calculadora_doDivi")
      *
      */
     public function doDiviAction(Request $request)

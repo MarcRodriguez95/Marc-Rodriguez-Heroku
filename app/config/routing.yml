@@ -2,3 +2,8 @@ app:
     resource: "@AppBundle/Controller/CalculadoraController.php"
     type:     annotation
     prefix:   /
+
+app:product:
+      resource: "@AppBundle/Controller/ProductController.php"
+      type:     annotation
+      prefix:   productos
