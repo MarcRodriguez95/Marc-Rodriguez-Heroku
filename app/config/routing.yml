@@ -7,3 +7,11 @@ app:product:
       resource: "@AppBundle/Controller/ProductController.php"
       type:     annotation
       prefix:   productos
+
+app:examen:
+      resource: "@AppBundle/Controller/ExamenController.php"
+      type:     annotation
+      prefix:   examen
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

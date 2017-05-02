@@ -17,23 +17,22 @@ use Symfony\Component\HttpFoundation\Response;
 use AppBundle\Form\ProductType;
 class ProductController extends Controller
 {
-
     /**
      * @Route("/", name="app_product_index")
+     * @return \Symfony\Component\HttpFoundation\Response
      */
-    public function indexAction(Request $request)
+    public function indexAction()
     {
 
         $m = $this->getDoctrine()->getManager();
 
-        $m->flush();
+
         $repo = $m->getRepository('AppBundle:Product');
-        $producto = $repo->findAll();
+        $prod = $repo->findAll();
 
-        return $this->render(':Productos:FormVista.html.twig', [
-            'producto' => $producto
+        return $this->render(':Productos:VistaProducto.html.twig', [
+            'prod' => $prod
         ]);
-
 
         /*
         $p = new Product();
@@ -67,12 +66,9 @@ class ProductController extends Controller
 
         ]
         );
-
         $m->persist($p);
         $m->flush();
-
 */
-
     }
 
 
@@ -112,7 +108,7 @@ class ProductController extends Controller
             return $this->redirectToRoute('app_product_index');
         }
 
-        $this->addFlash('mensaje', 'datos del form');
+        $this->addFlash('mensaje', 'datos del formulario');
 
         return $this->render(':Productos:FormVista.html.twig',
             [
@@ -122,7 +118,7 @@ class ProductController extends Controller
         );
 
     }
-    //ME HE QUEDADO AQUI
+
     /**
      * @Route("/update/{id}", name="app_product_update")
      */
@@ -134,10 +130,11 @@ class ProductController extends Controller
 
         $form = $this->createForm(ProductType::class, $prod);
 
+
         return $this->render(':Productos:FormVista.html.twig',
             [
                 'form'      =>  $form->createView(),
-                'action'    =>  $this->generateUrl('app_product_update', ['id' => $id])
+                'action'    =>  $this->generateUrl('app_product_doupdate', ['id' => $id])
             ]
         );
 
@@ -145,31 +142,37 @@ class ProductController extends Controller
     }
 
     /**
-     * @Route("/doupdate", name="app_product_doupdate")
+     * @Route("/doupdate/{id}", name="app_product_doupdate")
      * @param Request $request
      * @return \Symfony\Component\HttpFoundation\RedirectResponse
      */
-    public function doUpdateAction(Request $request)
+    public function doUpdateAction($id, Request $request)
     {
         $m          = $this->getDoctrine()->getManager();
         $repo       = $m->getRepository('AppBundle:Product');
+        $prod       = $repo->find($id);
+        $form       = $this->createForm(ProductType::class, $prod);
 
-        $id         = $request->request->get('id');
-        $nombre     = $request->request->get('nombre');
-        $descripcion= $request->request->get('descripcion');
-        $precio     = $request->request->get('precio');
+        $form->handleRequest($request);
 
-        $producto = $repo->find($id);
+        if($form->isValid())
+        {
+            $m->flush();
+            $this->addFlash('Mensaje', 'Producto actualizado');
 
-        $producto->setName($nombre);
-        $producto->setDescription($descripcion);
-        $producto->setPrecio($precio);
+            return $this->redirectToRoute('app_product_index');
+        }
 
-        $m->flush();
+        $this->addFlash('Mensaje', 'Producto actualizado en el formulario');
 
-        $this->addFlash('Mensaje', 'Producto cambiado');
+        return $this->render(':Productos:FormVista.html.twig',
+            [
+                'form'      => $form->createView(),
+                'action'    => $this->generateUrl('app_product_doupdate')
+            ]
 
-        return $this->redirectToRoute('app_product_index');
+        );
+
 
     }
 
@@ -177,13 +180,10 @@ class ProductController extends Controller
     /**
      * @Route("/remove/{id}", name="app_product_remove")
      */
-    public function removeAction($id)
+    public function removeAction(Product $prod)
     {
         $m = $this->getDoctrine()->getManager();
-        $repo = $m->getRepository('AppBundle:Product');
-
-        $producto = $repo->find($id);
-        $m->remove($producto);
+        $m->remove($prod);
         $m->flush();
 
         $this->addFlash('Mensaje', 'Producto eliminado');

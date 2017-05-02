@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %} Elementos {% endblock %}
+
+{% block body %}
+
+    <table>
+        {% for awsd in aa %}
+            <tr>
+                <td>{{ awsd.id}}</td>
+                <td>{{ awsd.qdwas}} </td>
+                <td>{{ awsd.gerrt }}</td>
+                <td>{{ awsd.thrw}}</td>
+                <td>{{ awsd.createAt|date("d/m/Y H:i:s")}}</td>
+                <td>{{ awsd.updateAt|date("d/m/Y H:i:s")}}</td>
+                <td> <a href="{{ path('app_ambd_update', {'id': awsd.id}) }}">Update</a> </td>
+                <td> <a href="{{ path('app_ambd_remove', {'id': awsd.id}) }}">Eliminar</a> </td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <div style="margin-top: 10px">
+        <a href="{{ path('app_ambd_insertar') }}">Añadir Elemento</a>
+    </div>
+
+{% endblock %}

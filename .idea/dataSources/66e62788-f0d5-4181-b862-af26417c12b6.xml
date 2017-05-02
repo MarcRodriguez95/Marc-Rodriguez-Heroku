@@ -10,101 +10,345 @@
     <schema id="5" name="sakila"/>
     <schema id="6" name="sys"/>
     <schema id="7" name="world"/>
-    <table id="8" parent="1" name="usuario"/>
-    <table id="9" parent="1" name="product"/>
-    <column id="10" parent="8" name="id">
+    <schema id="8" name="wordpress"/>
+    <table id="9" parent="1" name="usuario"/>
+    <table id="10" parent="1" name="product"/>
+    <table id="11" parent="1" name="ejemplo"/>
+    <table id="12" parent="1" name="product_again"/>
+    <table id="13" parent="1" name="ambd"/>
+    <table id="14" parent="1" name="fos_user"/>
+    <table id="15" parent="1" name="user"/>
+    <column id="16" parent="9" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="11" parent="8" name="correo">
+    <column id="17" parent="9" name="correo">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="12" parent="8" name="password">
+    <column id="18" parent="9" name="password">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="13" parent="8" name="username">
+    <column id="19" parent="9" name="username">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="14" parent="8" name="create_at">
+    <column id="20" parent="9" name="create_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="15" parent="8" name="updated_at">
+    <column id="21" parent="9" name="updated_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="16" parent="8" name="UNIQ_2265B05D35C246D5">
+    <index id="22" parent="9" name="UNIQ_2265B05D35C246D5">
       <columns>password</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="17" parent="8" name="UNIQ_2265B05D77040BC9">
+    <index id="23" parent="9" name="UNIQ_2265B05D77040BC9">
       <columns>correo</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <index id="18" parent="8" name="UNIQ_2265B05DF85E0677">
+    <index id="24" parent="9" name="UNIQ_2265B05DF85E0677">
       <columns>username</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="19" parent="8" name="PRIMARY">
+    <key id="25" parent="9" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <key id="20" parent="8" name="UNIQ_2265B05D77040BC9">
+    <key id="26" parent="9" name="UNIQ_2265B05D77040BC9">
       <columns>correo</columns>
       <underlying-index>UNIQ_2265B05D77040BC9</underlying-index>
     </key>
-    <key id="21" parent="8" name="UNIQ_2265B05D35C246D5">
+    <key id="27" parent="9" name="UNIQ_2265B05D35C246D5">
       <columns>password</columns>
       <underlying-index>UNIQ_2265B05D35C246D5</underlying-index>
     </key>
-    <key id="22" parent="8" name="UNIQ_2265B05DF85E0677">
+    <key id="28" parent="9" name="UNIQ_2265B05DF85E0677">
       <columns>username</columns>
       <underlying-index>UNIQ_2265B05DF85E0677</underlying-index>
     </key>
-    <column id="23" parent="9" name="id">
+    <column id="29" parent="10" name="id">
       <mandatory>1</mandatory>
       <data-type>int(11)|0</data-type>
       <sequence-identity>1</sequence-identity>
     </column>
-    <column id="24" parent="9" name="Name">
+    <column id="30" parent="10" name="Name">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="25" parent="9" name="Description">
+    <column id="31" parent="10" name="Description">
       <mandatory>1</mandatory>
       <data-type>varchar(255)|0</data-type>
     </column>
-    <column id="26" parent="9" name="Precio">
+    <column id="32" parent="10" name="Precio">
       <mandatory>1</mandatory>
       <data-type>decimal(6,2)|0</data-type>
     </column>
-    <column id="27" parent="9" name="create_at">
+    <column id="33" parent="10" name="create_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <column id="28" parent="9" name="update_at">
+    <column id="34" parent="10" name="update_at">
       <mandatory>1</mandatory>
       <data-type>datetime|0</data-type>
     </column>
-    <index id="29" parent="9" name="UNIQ_D34A04ADEB78CFF1">
+    <index id="35" parent="10" name="UNIQ_D34A04ADEB78CFF1">
       <columns>Description</columns>
       <desc-columns></desc-columns>
       <unique>1</unique>
     </index>
-    <key id="30" parent="9" name="PRIMARY">
+    <key id="36" parent="10" name="PRIMARY">
       <columns>id</columns>
       <primary>1</primary>
     </key>
-    <key id="31" parent="9" name="UNIQ_D34A04ADEB78CFF1">
+    <key id="37" parent="10" name="UNIQ_D34A04ADEB78CFF1">
       <columns>Description</columns>
       <underlying-index>UNIQ_D34A04ADEB78CFF1</underlying-index>
+    </key>
+    <column id="38" parent="11" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="39" parent="11" name="nombre">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="40" parent="11" name="apellido">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <key id="41" parent="11" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="42" parent="12" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="43" parent="12" name="Name">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="44" parent="12" name="Description">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="45" parent="12" name="Precio">
+      <mandatory>1</mandatory>
+      <data-type>decimal(6,2)|0</data-type>
+    </column>
+    <column id="46" parent="12" name="create_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="47" parent="12" name="update_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <index id="48" parent="12" name="UNIQ_32FD20A0EB78CFF1">
+      <columns>Description</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="49" parent="12" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="50" parent="12" name="UNIQ_32FD20A0EB78CFF1">
+      <columns>Description</columns>
+      <underlying-index>UNIQ_32FD20A0EB78CFF1</underlying-index>
+    </key>
+    <column id="51" parent="13" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="52" parent="13" name="qdwas">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="53" parent="13" name="gerrt">
+      <mandatory>1</mandatory>
+      <data-type>decimal(6,2)|0</data-type>
+    </column>
+    <column id="54" parent="13" name="thrw">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+    </column>
+    <column id="55" parent="13" name="create_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="56" parent="13" name="update_at">
+      <mandatory>1</mandatory>
+      <data-type>datetime|0</data-type>
+    </column>
+    <key id="57" parent="13" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <column id="58" parent="14" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="59" parent="14" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="60" parent="14" name="username_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="61" parent="14" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="62" parent="14" name="email_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="63" parent="14" name="enabled">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="64" parent="14" name="salt">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="65" parent="14" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="66" parent="14" name="last_login">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="67" parent="14" name="confirmation_token">
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="68" parent="14" name="password_requested_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="69" parent="14" name="roles">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <index id="70" parent="14" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="71" parent="14" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="72" parent="14" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="73" parent="14" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="74" parent="14" name="UNIQ_957A647992FC23A8">
+      <columns>username_canonical</columns>
+      <underlying-index>UNIQ_957A647992FC23A8</underlying-index>
+    </key>
+    <key id="75" parent="14" name="UNIQ_957A6479A0D96FBF">
+      <columns>email_canonical</columns>
+      <underlying-index>UNIQ_957A6479A0D96FBF</underlying-index>
+    </key>
+    <key id="76" parent="14" name="UNIQ_957A6479C05FB297">
+      <columns>confirmation_token</columns>
+      <underlying-index>UNIQ_957A6479C05FB297</underlying-index>
+    </key>
+    <column id="77" parent="15" name="id">
+      <mandatory>1</mandatory>
+      <data-type>int(11)|0</data-type>
+      <sequence-identity>1</sequence-identity>
+    </column>
+    <column id="78" parent="15" name="username">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="79" parent="15" name="username_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="80" parent="15" name="email">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="81" parent="15" name="email_canonical">
+      <mandatory>1</mandatory>
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="82" parent="15" name="enabled">
+      <mandatory>1</mandatory>
+      <data-type>tinyint(1)|0</data-type>
+    </column>
+    <column id="83" parent="15" name="salt">
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="84" parent="15" name="password">
+      <mandatory>1</mandatory>
+      <data-type>varchar(255)|0</data-type>
+    </column>
+    <column id="85" parent="15" name="last_login">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="86" parent="15" name="confirmation_token">
+      <data-type>varchar(180)|0</data-type>
+    </column>
+    <column id="87" parent="15" name="password_requested_at">
+      <data-type>datetime|0</data-type>
+    </column>
+    <column id="88" parent="15" name="roles">
+      <comment>(DC2Type:array)</comment>
+      <mandatory>1</mandatory>
+      <data-type>longtext|0</data-type>
+    </column>
+    <index id="89" parent="15" name="UNIQ_2DA1797792FC23A8">
+      <columns>username_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="90" parent="15" name="UNIQ_2DA17977A0D96FBF">
+      <columns>email_canonical</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <index id="91" parent="15" name="UNIQ_2DA17977C05FB297">
+      <columns>confirmation_token</columns>
+      <desc-columns></desc-columns>
+      <unique>1</unique>
+    </index>
+    <key id="92" parent="15" name="PRIMARY">
+      <columns>id</columns>
+      <primary>1</primary>
+    </key>
+    <key id="93" parent="15" name="UNIQ_2DA1797792FC23A8">
+      <columns>username_canonical</columns>
+      <underlying-index>UNIQ_2DA1797792FC23A8</underlying-index>
+    </key>
+    <key id="94" parent="15" name="UNIQ_2DA17977A0D96FBF">
+      <columns>email_canonical</columns>
+      <underlying-index>UNIQ_2DA17977A0D96FBF</underlying-index>
+    </key>
+    <key id="95" parent="15" name="UNIQ_2DA17977C05FB297">
+      <columns>confirmation_token</columns>
+      <underlying-index>UNIQ_2DA17977C05FB297</underlying-index>
     </key>
   </database-model>
 </dataSource>

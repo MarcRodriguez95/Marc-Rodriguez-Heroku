@@ -5,13 +5,13 @@
 {% block body %}
 
    <table>
-        {% for product in producto %}
+        {% for product in prod %}
             <tr>
         <td>{{ product.id}}</td>
         <td>{{ product.name}} </td>
         <td>{{ product.description }}</td>
         <td>{{ product.precio}}</td>
-        <td>{{ product.createAt|date}}</td>
+        <td>{{ product.createAt|date("d/m/Y H:i:s")}}</td>
         <td>{{ product.updateAt|date("d/m/Y H:i:s")}}</td>
         <td> <a href="{{ path('app_product_update', {'id': product.id}) }}">Update</a> </td>
         <td> <a href="{{ path('app_product_remove', {'id': product.id}) }}">Eliminar</a> </td>

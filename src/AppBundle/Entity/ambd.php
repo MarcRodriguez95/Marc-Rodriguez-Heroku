@@ -3,18 +3,16 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-use Symfony\Component\Validator\Constraints As Assert;
+
+
+
 /**
- * Product
+ * ambd
  *
- * @ORM\Table(name="product")
- * @ORM\Entity(repositoryClass="AppBundle\Repository\ProductRepository")
- * @ORM\HasLifecycleCallbacks()
- * @UniqueEntity(fields={"id"}, message="El id esta cogido")
- * @UniqueEntity(fields={"name"}, message="El nombre del producto ya existe")
+ * @ORM\Table(name="ambd")
+ * @ORM\Entity(repositoryClass="AppBundle\Repository\ambdRepository")
  */
-class Product
+class ambd
 {
     /**
      * @var int
@@ -27,25 +25,25 @@ class Product
 
     /**
      * @var string
-     * @Assert\NotBlank(message="Introduce un nombre")
-     * @ORM\Column(name="Name", type="string", length=255)
+     *
+     * @ORM\Column(name="qdwas", type="string", length=255)
+     *
      */
-    private $name;
+    private $qdwas;
 
     /**
      * @var string
      *
-     * @Assert\NotBlank(message="Introduce uns descripcion")
-     * @ORM\Column(name="Description", type="string", length=255, unique=true)
+     * @ORM\Column(name="gerrt", type="decimal", precision=6, scale=2)
      */
-    private $description;
+    private $gerrt;
 
     /**
-     * @var string
-     * @Assert\NotBlank(message="Introduce un precio")
-     * @ORM\Column(name="Precio", type="decimal", precision=6, scale=2)
+     * @var int
+     *
+     * @ORM\Column(name="thrw", type="integer")
      */
-    private $precio;
+    private $thrw;
 
     /**
      * @var \DateTime
@@ -61,6 +59,9 @@ class Product
      */
     private $updateAt;
 
+    /**
+     * ambd constructor.
+     */
     public function  __construct()
     {
         $this->createAt = new \DateTime();
@@ -78,75 +79,75 @@ class Product
     }
 
     /**
-     * Set name
+     * Set qdwas
      *
-     * @param string $name
+     * @param string $qdwas
      *
-     * @return Product
+     * @return ambd
      */
-    public function setName($name)
+    public function setQdwas($qdwas)
     {
-        $this->name = $name;
+        $this->qdwas = $qdwas;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get qdwas
      *
      * @return string
      */
-    public function getName()
+    public function getQdwas()
     {
-        return $this->name;
+        return $this->qdwas;
     }
 
     /**
-     * Set description
+     * Set gerrt
      *
-     * @param string $description
+     * @param string $gerrt
      *
-     * @return Product
+     * @return ambd
      */
-    public function setDescription($description)
+    public function setGerrt($gerrt)
     {
-        $this->description = $description;
+        $this->gerrt = $gerrt;
 
         return $this;
     }
 
     /**
-     * Get description
+     * Get gerrt
      *
      * @return string
      */
-    public function getDescription()
+    public function getGerrt()
     {
-        return $this->description;
+        return $this->gerrt;
     }
 
     /**
-     * Set precio
+     * Set thrw
      *
-     * @param string $precio
+     * @param integer $thrw
      *
-     * @return Product
+     * @return ambd
      */
-    public function setPrecio($precio)
+    public function setThrw($thrw)
     {
-        $this->precio = $precio;
+        $this->thrw = $thrw;
 
         return $this;
     }
 
     /**
-     * Get precio
+     * Get thrw
      *
-     * @return string
+     * @return int
      */
-    public function getPrecio()
+    public function getThrw()
     {
-        return $this->precio;
+        return $this->thrw;
     }
 
     /**
@@ -154,7 +155,7 @@ class Product
      *
      * @param \DateTime $createAt
      *
-     * @return Product
+     * @return ambd
      */
     public function setCreateAt($createAt)
     {
@@ -175,10 +176,10 @@ class Product
 
     /**
      * Set updateAt
-     * @param \DateTime $updateAt
+     *
      * @ORM\PreUpdate()
      *
-     * @return Product
+     * @return ambd
      */
     public function setUpdateAt()
     {
@@ -196,12 +197,5 @@ class Product
     {
         return $this->updateAt;
     }
-
-    function __toString()
-    {
-        return $this->getName();
-    }
-
-
 }
 

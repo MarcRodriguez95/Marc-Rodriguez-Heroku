@@ -1,10 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
 
-</body>
-</html>
+
+{% block body %}
+
+    <div>
+        <form method="post" action="{{ action }}" novalidate="novalidate">
+        <div>
+            {{ dump(form.vars.value) }}
+
+        <ul>
+            {% for error in form.vars.errors %}
+                <li>{{ error.message }}</li>
+             {% endfor %}
+        </ul>
+        </div>
+        <div>{{ form_label(form.name) }}{{ form_widget((form.name)) }}</div>
+        <div>{{ form_label(form.description) }}{{ form_widget((form.description)) }}</div>
+        <div>{{ form_label(form.precio) }}{{ form_widget((form.precio)) }}</div>
+         {{ form_rest(form) }}
+         <div><input type="submit" value="Ok"></div>
+        </form>
+
+    </div>
+
+{% endblock %}

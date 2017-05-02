@@ -2,28 +2,26 @@
 
 namespace AppBundle\Form;
 
-use Doctrine\DBAL\Types\TextType;
 use Symfony\Component\Form\AbstractType;
-use Symfony\Component\Form\Extension\Core\Type\IntegerType;
-use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class ProductType extends AbstractType
+class ambdType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('name')
-            ->add('description')
-            ->add('precio');
+            ->add('qdwas')
+            ->add('gerrt')
+            ->add('thrw');
+
     }
 
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(
             [
-                'data_class' => 'AppBundle\Entity\Product',
+                'data_class' => 'AppBundle\Entity\ambd',
             ]
         );
 
@@ -31,6 +29,6 @@ class ProductType extends AbstractType
 
     public function getName()
     {
-        return 'app_bundle_product_type';
+        return 'app_bundleambd_type';
     }
 }
